@@ -18,7 +18,8 @@ std::vector<T> generate_random_vector(std::size_t num, T min = -10, T max = 10)
 }
 
 int main()
-{ // 1
+{
+    // 1
     std::vector<double> v = generate_random_vector<double>(10, -10, 10);
     for (int i = 0; i < 10; ++i)
     {
@@ -275,7 +276,7 @@ int main()
     // 10
     std::string phrase = " ";
     std::cout << "Enter the sentence" << std::endl;
-    std::getline (std::cin, phrase);
+    std::getline(std::cin, phrase);
     std::size_t l = phrase.size();
     int q = 0;
     for (int i = 0; i < phrase.length(); ++i)
@@ -293,7 +294,7 @@ int main()
     std::cin >> c;
     while (y.find("can") != std::string::npos)
     {
-        size_t index = y.find ("can");
+        size_t index = y.find("can");
         y.replace(index + 1, 3, c);
     }
     std::cout << y << std::endl;
