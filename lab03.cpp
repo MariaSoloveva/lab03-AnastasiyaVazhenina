@@ -5,7 +5,6 @@
 #include <random>
 #include <string>
 #include <vector>
-
 template<class T>
 std::vector<T> generate_random_vector(std::size_t num, T min = -10, T max = 10)
 {
@@ -19,8 +18,7 @@ std::vector<T> generate_random_vector(std::size_t num, T min = -10, T max = 10)
 }
 
 int main()
-{
-    // 1
+{ // 1
     std::vector<double> v = generate_random_vector<double>(10, -10, 10);
     for (int i = 0; i < 10; ++i)
     {
@@ -51,15 +49,15 @@ int main()
     std::cout << std::endl;
     // 2
     std::vector<int> t = generate_random_vector<int>(10, 0, 10);
-    for (int i =0; i < 10; ++i)
+    for (int i = 0; i < 10; ++i)
     {
         std::cout << t[i] << " ";
     }
     std::cout << std::endl;
     int sum = 0;
-    for (int i =0; i < 10; ++i)
+    for (int i = 0; i < 10; ++i)
     {
-        sum += t[i];;
+        sum += t[i];
     }
     std::cout << sum << std::endl;
     int sum2 = 0;
@@ -79,6 +77,12 @@ int main()
     std::cout << "Enter k1 and k2, k1 < k2" << std::endl;
     std::cin >> k1;
     std::cin >> k2;
+    if ((k1 > t.size()) && (k2 > t.size()))
+    {
+        std::cout << "Enter k1 and k2, k1 < k2" << std::endl;
+        std::cin >> k1;
+        std::cin >> k2;
+    }
     int amount = 0;
     for (int i = k1; i <= k2; ++i)
     {
@@ -98,6 +102,12 @@ int main()
     std::cout << "Enter s1 and s2, s1 < s2" << std::endl;
     std::cin >> s1;
     std::cin >> s2;
+    if ((s1 > t.size()) && (s2 > t.size()))
+    {
+        std::cout << "Enter s1 and s2, s1 < s2" << std::endl;
+        std::cin >> s1;
+        std::cin >> s2;
+    }
     int sumS = 0;
     int k = 0;
     for (int i = s1; i <= s2; ++i)
@@ -114,15 +124,12 @@ int main()
     }
     std::cout << std::endl;
     int r = 0;
-    r = g[0];
-    g[0] = g[17];
-    g[17] = r;
-    r = g[1];
-    g[1] = g[18];
-    g[18] = r;
-    r = g[2];
-    g[2] = g[19];
-    g[19] = r;
+    for (int i = 0; i < 3; ++i)
+    {
+        r = g[i];
+        g[i] = g[17 + i];
+        g[17 + i] = r;
+    }
     for (int i = 0; i < 20; ++i)
     {
         std::cout << g[i] << " ";
@@ -148,7 +155,7 @@ int main()
         std::cout << w[i] << " ";
     }
     std::cout << std::endl;
-    for (int i = 9; i >= 0; --i)
+    for (int i = w.size() - 1; i >= 0; --i)
     {
         if (w[i] % 2 == 0)
         {
@@ -244,6 +251,12 @@ int main()
     std::cout << "Enter m and n, m < n" << std::endl;
     std::cin >> m;
     std::cin >> n;
+    if ((m > p.size()) && (n > p.size()))
+    {
+        std::cout << "Enter m and n, m < n" << std::endl;
+        std::cin >> m;
+        std::cin >> n;
+    }
     std::cout << p.substr(m, n) << std::endl;
     // 9
     std::string b;
@@ -252,7 +265,7 @@ int main()
     char s[b.length()];
     for (int i = 0; i < b.length(); ++i)
     {
-        s[i]='*';
+        s[i] = '*';
     }
     std::string result;
     std::string symbol;
@@ -260,9 +273,9 @@ int main()
     result = symbol + b + symbol;
     std::cout << result << std::endl;
     // 10
-    std::string phrase;
+    std::string phrase = " ";
     std::cout << "Enter the sentence" << std::endl;
-    std::cin >> phrase;
+    std::getline (std::cin, phrase);
     std::size_t l = phrase.size();
     int q = 0;
     for (int i = 0; i < phrase.length(); ++i)
@@ -280,7 +293,7 @@ int main()
     std::cin >> c;
     while (y.find("can") != std::string::npos)
     {
-        size_t index = y.find("can");
+        size_t index = y.find ("can");
         y.replace(index + 1, 3, c);
     }
     std::cout << y << std::endl;
